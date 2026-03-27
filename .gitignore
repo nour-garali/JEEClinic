@@ -1,0 +1,32 @@
+# ==========================================
+# Spring Boot Backend
+# ==========================================
+backend_Springboot/target/
+backend_Springboot/.mvn/
+backend_Springboot/*.log
+backend_Springboot/mvnw
+backend_Springboot/mvnw.cmd
+
+# ==========================================
+# Angular Frontend
+# ==========================================
+frontend-angular/node_modules/
+frontend-angular/dist/
+frontend-angular/.angular/
+frontend-angular/.cache/
+
+# ==========================================
+# IDEs & Editors
+# ==========================================
+.idea/
+*.iml
+.vscode/
+*.class
+*.jar
+*.war
+
+# ==========================================
+# OS
+# ==========================================
+.DS_Store
+Thumbs.db
