@@ -1,0 +1,80 @@
+/* Premium Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-in {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.slide-in-from-top-4 {
+  animation-name: slideDown;
+}
+
+/* Custom Scrollbar for Notifications */
+.max-h-\[400px\]::-webkit-scrollbar {
+  width: 6px;
+}
+
+.max-h-\[400px\]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.max-h-\[400px\]::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+.max-h-\[400px\]::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Glassmorphism & Effects */
+.bg-white\/80 {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Notification Item Hover */
+.group:hover .absolute.right-4 {
+  transform: translateY(-50%) scale(1.2);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Pulse for unread dot */
+.pulse-blue {
+  box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  animation: pulse-blue-anim 2s infinite;
+}
+
+@keyframes pulse-blue-anim {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
