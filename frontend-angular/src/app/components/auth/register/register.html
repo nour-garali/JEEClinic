@@ -1,0 +1,167 @@
+<div class="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-white font-['Inter']">
+  <!-- Left Column: Image Area -->
+  <div class="hidden lg:flex flex-col justify-between p-12 bg-[#305D7A] relative overflow-hidden group">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img src="/hero-bg.png" alt="Medical Office"
+        class="w-full h-full object-cover mix-blend-overlay opacity-40 transition-transform duration-700 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#305D7A] via-transparent to-transparent opacity-60"></div>
+    </div>
+
+    <!-- Top: Logo -->
+    <div class="flex items-center gap-3 relative z-10">
+      <div class="bg-white/20 p-2 rounded-xl backdrop-blur-md border border-white/30">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <circle cx="12" cy="10" r="3" fill="white" />
+        </svg>
+      </div>
+      <span class="text-xl font-bold text-white tracking-widest text-shadow-sm">ProHealth</span>
+    </div>
+
+    <!-- Middle content overlay -->
+    <div class="relative z-10 max-w-lg mt-auto mb-10">
+      <h1 class="text-6xl font-extrabold text-white leading-none mb-6 drop-shadow-md">
+        Votre santé,<br><span class="text-blue-100">notre mission.</span>
+      </h1>
+      <p class="text-blue-50/90 text-xl font-medium leading-relaxed max-w-sm">
+        Rejoignez ProHealth pour une expérience de soins modernes et personnalisés.
+      </p>
+    </div>
+
+    <!-- Stats summary bottom -->
+    <div class="relative z-10 grid grid-cols-2 gap-8 border-t border-white/20 pt-8 mt-auto">
+      <div>
+        <span class="block text-3xl font-black text-white">95%</span>
+        <span class="text-blue-100/70 text-sm font-semibold uppercase tracking-wider">Satisfaction Patient</span>
+      </div>
+      <div>
+        <span class="block text-3xl font-black text-white">24/7</span>
+        <span class="text-blue-100/70 text-sm font-semibold uppercase tracking-wider">Disponibilité</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column: Form -->
+  <div class="flex flex-col justify-center items-center p-8 sm:p-12 lg:p-24 bg-slate-50/30">
+    <div class="w-full max-w-md space-y-12">
+      <!-- Form Header -->
+      <div class="space-y-4">
+        <div class="lg:hidden flex items-center gap-2 mb-8 animate-pulse">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#305D7A" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <span class="text-2xl font-black text-[#305D7A]">ProHealth</span>
+        </div>
+        <h2 class="text-4xl font-black text-[#1a3c53] tracking-tighter">Créer un compte</h2>
+        <p class="text-slate-500 font-medium text-lg">Inscrivez-vous pour votre suivi médical personnalisé.</p>
+      </div>
+
+      <!-- Registration Form -->
+      <form class="space-y-6" (ngSubmit)="onSubmit()" ngNativeValidate>
+        <div *ngIf="errorMessage" class="bg-red-50 border-l-4 border-red-500 p-5 rounded-r-xl shadow-sm">
+          <p class="text-sm text-red-700 font-bold tracking-tight">{{ errorMessage }}</p>
+        </div>
+
+        <!-- Username -->
+        <div class="space-y-2">
+          <label for="username" class="text-xs font-black uppercase text-slate-400 tracking-widest pl-1">Nom
+            d'utilisateur</label>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="h-6 w-6 text-slate-300 group-focus-within:text-[#305D7A] transition-colors"
+                viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <input id="username" name="username" type="text" required [(ngModel)]="username"
+              class="block w-full pl-12 pr-4 py-4 bg-white border-2 border-slate-100 rounded-2xl text-slate-900 font-semibold placeholder-slate-300 focus:outline-none focus:ring-4 focus:ring-[#305D7A]/5 focus:border-[#305D7A] transition-all duration-300 shadow-sm"
+              placeholder="Ex: Jean Dupont">
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="space-y-2">
+          <label for="email" class="text-xs font-black uppercase text-slate-400 tracking-widest pl-1">Adresse
+            Email</label>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="h-6 w-6 text-slate-300 group-focus-within:text-[#305D7A] transition-colors"
+                viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+            </div>
+            <input id="email" name="email" type="email" required [(ngModel)]="email"
+              class="block w-full pl-12 pr-4 py-4 bg-white border-2 border-slate-100 rounded-2xl text-slate-900 font-semibold placeholder-slate-300 focus:outline-none focus:ring-4 focus:ring-[#305D7A]/5 focus:border-[#305D7A] transition-all duration-300 shadow-sm"
+              placeholder="patient@exemple.com">
+          </div>
+        </div>
+
+        <!-- Telephone -->
+        <div class="space-y-2">
+          <label for="tel" class="text-xs font-black uppercase text-slate-400 tracking-widest pl-1">Téléphone</label>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="h-6 w-6 text-slate-300 group-focus-within:text-[#305D7A] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <input id="tel" name="tel" type="tel" required [(ngModel)]="tel"
+              class="block w-full pl-12 pr-4 py-4 bg-white border-2 border-slate-100 rounded-2xl text-slate-900 font-semibold placeholder-slate-300 focus:outline-none focus:ring-4 focus:ring-[#305D7A]/5 focus:border-[#305D7A] transition-all duration-300 shadow-sm"
+              placeholder="+212 600 000 000">
+          </div>
+        </div>
+
+        <!-- Date de Naissance -->
+        <div class="space-y-2">
+          <label for="dateNaissance" class="text-xs font-black uppercase text-slate-400 tracking-widest pl-1">Date de naissance</label>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="h-6 w-6 text-slate-300 group-focus-within:text-[#305D7A] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <input id="dateNaissance" name="dateNaissance" type="date" required [(ngModel)]="dateNaissance" [max]="today"
+              class="block w-full pl-12 pr-4 py-4 bg-white border-2 border-slate-100 rounded-2xl text-slate-900 font-semibold placeholder-slate-300 focus:outline-none focus:ring-4 focus:ring-[#305D7A]/5 focus:border-[#305D7A] transition-all duration-300 shadow-sm">
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="space-y-2">
+          <label for="password" class="text-xs font-black uppercase text-slate-400 tracking-widest pl-1">Mot de
+            passe</label>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="h-6 w-6 text-slate-300 group-focus-within:text-[#305D7A] transition-colors"
+                viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <input id="password" name="password" type="password" required [(ngModel)]="password"
+              class="block w-full pl-12 pr-4 py-4 bg-white border-2 border-slate-100 rounded-2xl text-slate-900 font-semibold placeholder-slate-300 focus:outline-none focus:ring-4 focus:ring-[#305D7A]/5 focus:border-[#305D7A] transition-all duration-300 shadow-sm"
+              placeholder="••••••••">
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit"
+          class="w-full flex justify-center py-5 px-4 bg-[#305D7A] hover:bg-[#1a3c53] text-white text-lg font-bold rounded-2xl shadow-xl shadow-blue-900/10 transform active:scale-[0.98] transition-all duration-300 focus:outline-none focus:ring-offset-2">
+          Finaliser mon inscription
+        </button>
+      </form>
+
+      <!-- Footer navigation -->
+      <div class="pt-10 text-center border-t border-slate-100">
+        <p class="text-slate-500 font-semibold">
+          Déjà parmi nous ?
+          <a routerLink="/login"
+            class="ml-1 text-[#305D7A] font-black hover:underline cursor-pointer transition-all">Connectez-vous</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
