@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # Database Service (PostgreSQL)
+  db:
+    image: postgres:15-alpine
+    container_name: clinique-db
+    environment:
+      POSTGRES_DB: clinique_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - clinique-network
+
+  # Backend Service (Spring Boot API)
+  backend:
+    build:
+      context: ./backend_Springboot
+      dockerfile: Dockerfile
+    container_name: clinique-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/clinique_db
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - db
+    networks:
+      - clinique-network
+
+  # Frontend Service (Angular + Nginx)
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend_Dockerfile
+    container_name: clinique-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - clinique-network
+
+volumes:
+  pgdata:
+
+networks:
+  clinique-network:
+    driver: bridge
