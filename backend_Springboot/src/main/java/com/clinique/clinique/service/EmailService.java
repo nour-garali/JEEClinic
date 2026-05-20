@@ -4,6 +4,7 @@ import com.clinique.clinique.entity.UserRole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ public class EmailService {
 
     private final JavaMailSender mailSender;
 
+    @Value("${app.frontend.url:http://localhost:4200}")
+    private String frontendUrl;
+
     @Autowired
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
@@ -22,7 +26,7 @@ public class EmailService {
 
     public void sendInvitationEmail(String toEmail, String token, UserRole role) {
         String roleSegment = role == UserRole.MEDECIN ? "register-doctor" : "register-secretary";
-        String inviteUrl = "http://localhost:4200/" + roleSegment + "?token=" + token;
+        String inviteUrl = frontendUrl + "/" + roleSegment + "?token=" + token;
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("ProHealth <nourgarali@gmail.com>");
