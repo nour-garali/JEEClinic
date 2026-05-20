@@ -12,11 +12,11 @@ import { AuthService } from '../../../services/auth.service';
   styleUrl: './login.css'
 })
 export class Login {
-  email = '';
-  password = '';
+  email = 'admin@gmail.com';
+  password = 'Mm20448816';
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
     this.authService.login({ email: this.email, password: this.password }).subscribe({

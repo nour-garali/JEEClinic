@@ -33,15 +33,15 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
         // Initialize Default Admin
-        if (!adminRepository.existsByUsername("admin")) {
+        if (!adminRepository.existsByEmail("admin@gmail.com")) {
             Admin admin = new Admin();
             admin.setUsername("admin");
-            admin.setPassword(passwordEncoder.encode("admin123"));
-            admin.setEmail("admin@prohealth.com");
-            admin.setNom("Administrateur Système");
+            admin.setPassword(passwordEncoder.encode("Mm20448816"));
+            admin.setEmail("admin@gmail.com");
+            admin.setNom("Administrateur");
             admin.setRole(UserRole.ADMIN);
             adminRepository.save(admin);
-            log.info(">>>> Compte ADMIN créé : admin / admin123");
+            log.info(">>>> Compte ADMIN créé : admin@gmail.com / Mm20448816");
         }
 
         // Initialize Default Medecin
